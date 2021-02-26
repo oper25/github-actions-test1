@@ -44,11 +44,23 @@ jobs:
           
   my_deploys:
     runs-on: ubuntu-latest
-    needs: [my_testing]         #run "my_deploys" action after "my_testing" action
+    needs: [my_testing]                          #run "my_deploys" action after "my_testing" action
+    env:                                          #specify variables only for this Job. It will be wrok onli inside this job. NOT GLOBAL
+      VAR1: "this is  Job level Variable1"        
+      VAR2: "this is  Job level Variable2"
     
     steps:
     - name: Print Hello Message
       run : echo "Hello World from Deploy job"
+      
+    - name: Print env vars              
+      run: |                                  
+        echo "Var1 : ${{env.VAR1}}"
+        echo "Var2 : ${{env.VAR2}}"
+        echo "Var3 = $LOCAL_VAR"
+      env:                                        #specify local variables. it will work only for step "Print env vars"
+        LOCAL_VAR: "This is super local environment variables"
+
       
     - name: Deployment package
       run: echo "Deploy package name is ${{env.DEPLOY_PACKAGE_NAME}}"
@@ -57,4 +69,4 @@ jobs:
       run: aws --version                                 #check installing aws cli on this docker
     
     - name: Lets test some packages if they are here 2
-      run: zip                                          #check installing zip tool on this docker
+      run: zip --version                                          #check installing zip tool on this docker
