@@ -10,7 +10,7 @@ name: My-GitHubActions_Basics
 on:
   push:                       #specify action chich git will be monitor 
     branches:                 #specify branch in which git will be monitor action
-      - master
+      - main
    
 # Describe action which git should run
 jobs:
