@@ -1,0 +1,30 @@
+#------------------------------------
+# This is test project workflow
+#------------------------------------
+
+# Name for this action
+name: My-GitHubActions_Basics     
+
+
+# Controls when the action will run. 
+on:
+  push:                       #specify action chich git will be monitor 
+    branches:                 #specify branch in which git will be monitor action
+      - master
+   
+# Describe action which git should run
+jobs:
+  My_testing:                 #First job name
+    runs-on: ubuntu-latest    #need specify image docker conteiner, will be run my job on docker 
+    
+    steps:
+    - name: Print Hello Message
+      run : "Hello World from Testing"
+
+          
+  My_deploys:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Print Hello Message
+      run : "Hello World from Deploy job"
