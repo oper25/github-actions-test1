@@ -31,6 +31,9 @@ jobs:
         echo "Hello Message1"
         echo "Hello Message2"
         echo "Hello Application name: ${{env.APPLIKATION_NAME}}"
+
+    - name: List current folder
+      run: ls -alh
       
 
           
