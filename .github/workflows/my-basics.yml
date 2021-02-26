@@ -3,7 +3,12 @@
 #------------------------------------
 
 # Name for this action
-name: My-GitHubActions_Basics     
+name: My-GitHubActions_Basics
+env:                            #specify global variables
+  APPLIKATION_NAME: "MyAPP"
+  DEPLOY_PACKAGE_NAME : "MyAPP-deploy-ver-${{github.sha}}"    #where github.sha - commit hash number for every commit
+
+    
 
 
 # Controls when the action will run. 
@@ -18,8 +23,14 @@ jobs:
     runs-on: ubuntu-latest    #need specify image docker conteiner, will be run my job on docker 
     
     steps:
-    - name: Print Hello Message
-      run : echo "Hello World from Testing"
+    - name: Print Hello Message               #task1 name
+      run : echo "Hello World from Testing"   #what task should do
+      
+    - name: Execute few commands              #task2 name
+      run: |                                  #what task should do. I - mens multiple command
+        echo "Hello Message1"
+        echo "Hello Message2"
+        echo "Hello Application name: ${{env.APPLIKATION_NAME}}"
       
 
           
@@ -30,3 +41,6 @@ jobs:
     steps:
     - name: Print Hello Message
       run : echo "Hello World from Deploy job"
+      
+    - name: Deployment package
+      run: echo "Deploy package name is ${{env.DEPLOY_PACKAGE_NAME}}"
