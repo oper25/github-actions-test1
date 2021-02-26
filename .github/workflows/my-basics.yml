@@ -34,7 +34,12 @@ jobs:
 
     - name: List current folder
       run: ls -alh
+    
+    - name: Git clone my repo
+      uses: actions/checkout@v1         #it internal script to clone you repo from fit in docker
       
+    - name: List current folder after cloning
+      run: ls -alh
 
           
   my_deploys:
@@ -47,3 +52,9 @@ jobs:
       
     - name: Deployment package
       run: echo "Deploy package name is ${{env.DEPLOY_PACKAGE_NAME}}"
+    
+    - name: Lets test some packages if they are here 1
+      run: aws --vesion                                 #check installing aws cli on this docker
+    
+    - name: Lets test some packages if they are here 2
+      run: zip                                          #check installing zip tool on this docker
