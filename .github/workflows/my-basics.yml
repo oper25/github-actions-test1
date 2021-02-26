@@ -54,7 +54,7 @@ jobs:
       run: echo "Deploy package name is ${{env.DEPLOY_PACKAGE_NAME}}"
     
     - name: Lets test some packages if they are here 1
-      run: aws --vesion                                 #check installing aws cli on this docker
+      run: aws --version                                 #check installing aws cli on this docker
     
     - name: Lets test some packages if they are here 2
       run: zip                                          #check installing zip tool on this docker
